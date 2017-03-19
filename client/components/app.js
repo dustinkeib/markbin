@@ -1,9 +1,9 @@
-import React from 'react/react'
+import React from 'react'
 
 export default () => {
   return (
     <div>
-      MarkBin!!!
+      Markbin!!!
     </div>
   )
 }
