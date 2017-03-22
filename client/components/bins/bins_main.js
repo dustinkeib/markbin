@@ -1,12 +1,20 @@
 import React, { Component } from 'react'
+import { createContainer } from 'meteor/react-meteor-data'
+import { Bins } from '../../../imports/collections/bins'
+import BinsEditor from './bins_editor'
 
 class BinsMain extends Component {
   render() {
     // this.props.params.binId to get binId
+    console.log(this.props.bin)
     return (
-      <div>BinsMain</div>
+      <div><BinsEditor bin={this.props.bin} /></div>
     )
   }
 }
 
-export default BinsMain
+export default createContainer((props) => {
+  const { binId } = props.params
+  Meteor.subscribe('bins')
+  return { bin: Bins.findOne() }
+}, BinsMain)
