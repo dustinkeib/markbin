@@ -5,8 +5,17 @@ import BinsEditor from './bins_editor'
 
 class BinsMain extends Component {
   render() {
+    if (!this.props.bin) {
+      return (
+        <div>
+          {/* Insert spinner component here :) */}
+          Loading...
+        </div>
+      )
+    }
+
     // this.props.params.binId to get binId
-    console.log(this.props.bin)
+    // console.log(this.props.bin)
     return (
       <div><BinsEditor bin={this.props.bin} /></div>
     )

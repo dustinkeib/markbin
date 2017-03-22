@@ -14,6 +14,11 @@ Meteor.methods({
   // remove bin matching given bin object
   'bins.remove': function(bin) {
     return Bins.remove(bin)
+  },
+
+  // Edit content in a bin
+  'bins.update': function (bin, content) {
+    return Bins.update(bin._id, { $set: { content } })
   }
 })
 
