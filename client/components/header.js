@@ -1,12 +1,16 @@
 import React, { Component } from 'react'
 import Accounts from './accounts'
-import { Link } from 'react-router'
+import { Link, browserHistory } from 'react-router'
 
 class Header extends Component {
   onBinClick (event) {
     // Don't refresh browser
     event.preventDefault()
-    Meteor.call('bins.insert')
+    // insert bin record ; fire callback to navigate to /bins/binId
+    Meteor.call('bins.insert', (error, binId) => {
+      // programmatic navigation using browserHistory to specific binId
+      browserHistory.push(`/bins/${binId}`)
+    })
   }
 
   render() {
